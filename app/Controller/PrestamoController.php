@@ -8,7 +8,12 @@ class PrestamoController {
         Auth::requireLogin();
     }
     public function index() {
-        $prestamos = Prestamo::prestamosActivos();
+        // Filtros de búsqueda desde GET
+        $q = $_GET['q'] ?? '';
+        $estado = $_GET['estado'] ?? 'activo';
+
+        // Obtener préstamos filtrados
+        $prestamos = Prestamo::buscar($q, $estado);
         include '../app/View/prestamos/index.php';
     }
 

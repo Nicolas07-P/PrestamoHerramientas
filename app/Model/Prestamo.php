@@ -116,5 +116,39 @@ class Prestamo {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function buscar($q = '', $estado = 'activo') {
+    $db = Database::connect();
+    $where = "WHERE p.estado = ?";
+    $params = [$estado];
+
+    if ($q !== '') {
+        $where .= " AND (u.nombre LIKE ? OR u.apellido LIKE ? OR h.nombre LIKE ?)";
+        $like = "%$q%";
+        $params[] = $like;
+        $params[] = $like;
+        $params[] = $like;
+    }
+
+    // Si el usuario no es admin, solo ve sus préstamos
+    if (!Auth::isAdmin()) {
+        $where .= " AND p.id_usuario = ?";
+        $params[] = $_SESSION['usuario']['id'];
+    }
+
+    $sql = "
+        SELECT p.id AS id_prestamo, u.nombre, u.apellido, h.nombre AS herramienta, dp.cantidad, dp.id_herramienta, dp.id AS id_detalle,
+            p.fecha_prestamo, p.fecha_devolucion_estimada, p.fecha_devolucion_real, p.estado
+        FROM prestamos p
+        JOIN usuarios u ON p.id_usuario = u.id
+        JOIN detalle_prestamos dp ON p.id = dp.id_prestamo
+        JOIN herramientas h ON dp.id_herramienta = h.id
+        $where
+        ORDER BY p.fecha_prestamo DESC
+    ";
+    $stmt = $db->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
 }

@@ -1,6 +1,17 @@
 <h2>Préstamos Activos</h2>
 <a href="?controller=prestamos&action=create">Nuevo Préstamo</a>
+// Formulario de búsqueda y filtrado
+<form method="GET" action="">
+    <input type="hidden" name="controller" value="prestamos">
+    <input type="text" name="q" placeholder="Buscar usuario o herramienta" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+    <select name="estado">
+        <option value="">-- Estado --</option>
+        <option value="activo" <?= (($_GET['estado'] ?? '') === 'activo') ? 'selected' : '' ?>>Activo</option>
+        <option value="devuelto" <?= (($_GET['estado'] ?? '') === 'devuelto') ? 'selected' : '' ?>>Devuelto</option>
+    </select>
+    <button type="submit">Buscar/Filtrar</button>
 
+</form>
 
 <table border="1">
     <tr>
