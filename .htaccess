@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Cambia la base si tu carpeta se llama prestamo_herramientas
+RewriteBase /prestamo_herramientas/
+
+# Si el archivo o directorio no existe, redirige a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ public/index.php [L]
