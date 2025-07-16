@@ -1,4 +1,14 @@
 <h2>Usuarios</h2>
+<?php if (isset($_GET['error']) && $_GET['error'] === 'relacionado'): ?>
+    <div style="color:red;">No se puede eliminar el usuario porque tiene préstamos asociados.</div>
+<?php endif; ?>
+<?php if ($_SESSION['usuario']['rol'] === 'admin'): ?>
+<form method="GET" action="">
+    <input type="hidden" name="controller" value="usuarios">
+    <input type="text" name="q" placeholder="Buscar usuario" value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+    <button type="submit">Buscar</button>
+</form>
+<?php endif; ?>
 <a href="?controller=usuarios&action=create">Nuevo Usuario</a>
 <table border="1">
     <tr>

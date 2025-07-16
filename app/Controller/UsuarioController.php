@@ -8,8 +8,17 @@ class UsuarioController {
         Auth::requireLogin();
         Auth::requireAdmin();
     }
+
     public function index() {
-        $usuarios = Usuario::all();
+        Auth::requireLogin();
+        Auth::requireAdmin();
+
+        $q = $_GET['q'] ?? '';
+        if ($q !== '') {
+            $usuarios = Usuario::buscar($q);
+        } else {
+            $usuarios = Usuario::all();
+        }
         include __DIR__ . '/../View/usuarios/index.php';
     }
 
@@ -68,10 +77,15 @@ class UsuarioController {
     }
 
     public function delete($id) {
+    try {
         Usuario::delete($id);
         header("Location: ?controller=usuarios");
-
+    } catch (PDOException $e) {
+        header("Location: ?controller=usuarios&error=relacionado");
     }
+    exit;
+    }
+
     //busqueda por correo
     public static function findByEmail($email) {
     $db = Database::connect();

@@ -39,6 +39,15 @@ class Usuario {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function buscar($q) {
+    $db = Database::connect();
+    $sql = "SELECT * FROM usuarios WHERE nombre LIKE ? OR apellido LIKE ? OR email LIKE ?";
+    $like = "%$q%";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$like, $like, $like]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 }
 
 
