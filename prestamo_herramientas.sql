@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS prestamo_herramientas;
+CREATE DATABASE IF NOT EXISTS prestamo_herramientas1;
 USE prestamo_herramientas;
 
 -- Tabla de usuarios
