@@ -1,8 +1,10 @@
+<?php include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
 <h2>Herramientas</h2>
 <a href="?controller=herramientas&action=create">Nueva Herramienta</a>
 <?php if (isset($_GET['error']) && $_GET['error'] === 'relacionada'): ?>
     <div style="color:red;">No se puede eliminar la herramienta porque está asociada a un préstamo.</div>
 <?php endif; ?>
+
 <table border="1">
     <tr>
         <th>Nombre</th>

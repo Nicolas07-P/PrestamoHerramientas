@@ -43,3 +43,5 @@ Proyecto PHP con arquitectura MVC que gestiona el prestamo de herramientas, el d
     - Administrador: Gestiona usuarios, herramientas, ve y filtra todos los prestamos.
     - Usuario:Puede solicitar, ver y devolver sus propios prestamos.
 
+* Diagrama de base de datos
+    Este se encuentra en la carpeta Readme.md y es un archivo png llamado "Diagrama base de datos prestamo_herramientas1".

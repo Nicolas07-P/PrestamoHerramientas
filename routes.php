@@ -1,4 +1,30 @@
 <?php
+/**
+ * Archivo de rutas principal del sistema de Préstamo de Herramientas
+ *
+ * Este archivo recibe todas las solicitudes HTTP y, según los parámetros 'controller' y 'action'
+ * presentes en la URL, determina qué controlador y método deben ser ejecutados.
+ *
+ * Funcionamiento general:
+ * - Inicia la sesión si es necesario.
+ * - Lee los parámetros 'controller' y 'action' de la URL (?controller=...&action=...).
+ * - Según el valor de 'controller', carga el archivo del controlador correspondiente (usuarios, herramientas, prestamos, auth).
+ * - Crea una instancia del controlador.
+ * - Utiliza un bloque match para llamar al método (action) correspondiente del controlador; si no se especifica o no coincide, usa la acción por defecto (index o login).
+ * - Si el controlador no existe, muestra "Página no encontrada."
+ *
+ * Ejemplo de uso:
+ *   - ?controller=usuarios&action=create → Ejecuta UsuarioController::create()
+ *   - ?controller=herramientas&action=edit&id=5 → Ejecuta HerramientaController::edit(5)
+ *   - ?controller=prestamos&action=historial → Ejecuta PrestamoController::historial()
+ *   - Si no se especifica 'controller', la aplicación redirige a login (ver public/index.php)
+ *
+ * Nota:
+ * - Los controladores deben estar en app/Controller y llamarse UsuarioController, HerramientaController, PrestamoController o AutenticacionController.
+ * - Cada controlador debe implementar los métodos públicos que aquí se llaman.
+ * - El parámetro $_POST se usa para enviar datos de formularios en acciones como 'store' o 'update'.
+ * - El parámetro $_GET['id'] se usa en acciones que requieren un identificador (edit, update, delete, devolver).
+ */
 session_start();
 
 $action = $_GET['action'] ?? '';

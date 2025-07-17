@@ -1,16 +1,32 @@
 <?php
 require_once __DIR__.'/../../config/database.php';
 require_once __DIR__.'/../Helpers/Auth.php';
+/**
+ * Modelo de prestamos permite gestionar los préstamos de herramientas.
+ * Proporciona métodos para crear, listar, devolver y buscar préstamos.
+ */
 class Prestamo {
+    /**
+     * Obtiene todos los préstamos activos.
+     * @return array Lista de préstamos activos.
+     */
     public static function all() {
         $db = Database::connect();
         return $db->query("SELECT * FROM prestamos WHERE estado = 'activo'")->fetchAll(PDO::FETCH_ASSOC);
     }
+    /**
+     * Busca prestamos que tienen por estado 'devuelto'.
+     * Esto con el fin de poder ver el historial de prestamos ya devueltos
+     * @return array Lista de préstamos devueltos.
+     */
 
     public static function historial() {
         $db = Database::connect();
         return $db->query("SELECT * FROM prestamos WHERE estado = 'devuelto'")->fetchAll(PDO::FETCH_ASSOC);
     }
+    /**
+     * Crea un nuevo prestamo y descuenta la cantidad de la herramienta prestada.
+     */
 
     public static function create($data) {
         $db = Database::connect();
@@ -19,7 +35,10 @@ class Prestamo {
 
         $db->exec("UPDATE herramientas SET cantidad_disponible = cantidad_disponible - 1 WHERE id = " . intval($data['id_herramienta']));
     }
-
+     /**
+      * Devuelve una herramienta prestada de forma parcial.
+      * @param int $idDetalle ID del detalle del préstamo.
+      */
     public static function devolverHerramientaDetalle($idDetalle) {
         $db = Database::connect();
 
@@ -48,6 +67,11 @@ class Prestamo {
             }
         }
     }
+    /**
+     * Crea un nuevo préstamo y devuelve el ID del préstamo creado.
+     * @param array $data Datos del préstamo, incluyendo usuario, fecha de préstamo y fecha de devolución estimada.
+     * @return int ID del préstamo creado.
+     */
 
     public static function crearDevolverId($data) {
         $db = Database::connect();
@@ -55,6 +79,13 @@ class Prestamo {
         $stmt->execute([$data['id_usuario'], $data['fecha_prestamo'], $data['fecha_devolucion_estimada']]);
         return $db->lastInsertId();
     }
+    /**
+     * Agrega un detalle de préstamo para una herramienta específica.
+     * @param int $idPrestamo ID del préstamo al que se agrega el detalle.
+     * @param int $idHerramienta ID de la herramienta prestada.
+     * @param int $cantidad Cantidad de la herramienta prestada.
+     * @return bool True si se agregó correctamente, false en caso contrario.
+     */
 
     public static function agregarDetalle($idPrestamo, $idHerramienta, $cantidad) {
         $db = Database::connect();
@@ -62,7 +93,10 @@ class Prestamo {
         $stmt->execute([$idPrestamo, $idHerramienta, $cantidad]);
     }
 
-
+    /**
+     * Obtiene los préstamos activos del usuario autenticado o de todos si es administrador.
+     * @return array Lista de préstamos activos.
+     */
     public static function prestamosActivos() {
         $db = Database::connect();
         $where = "WHERE p.estado = 'activo'";
@@ -89,6 +123,10 @@ class Prestamo {
         $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    /**
+     * Obtiene los préstamos del usuario si el estado del prestamo es devuelto.
+     * @return array Lista de préstamos completados.
+     */
 
     public static function prestamosCompletados() {
         $db = Database::connect();
@@ -115,6 +153,12 @@ class Prestamo {
         $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    /**
+     * Busca préstamos por término de búsqueda y estado y permila visualizacion dependiendo su rol.
+     * Permite filtrar por nombre de usuario, apellido o nombre de herramienta.
+     * @param string $q Término de búsqueda.
+     * @param string $estado Estado del préstamo ('activo' o 'devuelto').
+     */
 
     public static function buscar($q = '', $estado = 'activo') {
     $db = Database::connect();

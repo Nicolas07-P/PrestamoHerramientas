@@ -1,7 +1,10 @@
 <?php
 require_once __DIR__.'/../Helpers/Auth.php';
 require_once __DIR__.'/../Model/Usuario.php';
-
+/**
+ * Controlador para la gestion de usuarios.
+ * Maneja operaciones CRUD y autenticación de usuarios.
+ */
 class UsuarioController {
 
     public function __construct() {
@@ -64,17 +67,31 @@ class UsuarioController {
         header("Location: ?controller=usuarios");
         exit;
     }
+    /**
+     * Muestra el formulario de edición de un usuario.
+     * @param int $id ID del usuario a editar.
+     */
 
     public function edit($id) {
         $usuario = Usuario::find($id);
         include __DIR__ . '/../View/usuarios/edit.php';
     }
+    /**
+     * Actualiza los datos de un usuario.
+     * @param int $id ID del usuario a actualizar.
+     * @param array $data Datos actualizados del usuario.
+     */
 
     public function update($id, $data) {
         Usuario::update($id, $data);
         header("Location: ?controller=usuarios");
 
     }
+    /**
+     * Elimina un usuario.
+     * @param int $id ID del usuario a eliminar.
+     * Maneja excepciones si el usuario está relacionado con otros registros.
+     */
 
     public function delete($id) {
     try {
@@ -86,7 +103,10 @@ class UsuarioController {
     exit;
     }
 
-    //busqueda por correo
+    /**
+     * Busca un usuario por medio de su correo electronico.
+     * @param string $email Correo electronico del usuario.
+     */
     public static function findByEmail($email) {
     $db = Database::connect();
     $stmt = $db->prepare("SELECT * FROM usuarios WHERE email = ?");

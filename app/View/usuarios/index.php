@@ -1,4 +1,6 @@
+<?php include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
 <h2>Usuarios</h2>
+<!-- contenido de la vista -->
 <?php if (isset($_GET['error']) && $_GET['error'] === 'relacionado'): ?>
     <div style="color:red;">No se puede eliminar el usuario porque tiene préstamos asociados.</div>
 <?php endif; ?>
@@ -31,4 +33,4 @@
     </tr>
     <?php endforeach; ?>
 </table>
-<a href="?controller=auth&action=login">Inicio</a>
+<?php include __DIR__ . '/../VistaReutilizable/pie.php'; ?>
