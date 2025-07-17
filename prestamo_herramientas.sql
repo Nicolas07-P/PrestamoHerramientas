@@ -27,17 +27,16 @@ CREATE TABLE IF NOT EXISTS prestamos (
     fecha_devolucion_estimada DATE NOT NULL,
     fecha_devolucion_real DATE DEFAULT NULL,
     estado ENUM('activo', 'devuelto') DEFAULT 'activo',
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- Tabla detalle de préstamos
 CREATE TABLE IF NOT EXISTS detalle_prestamos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_prestamo INT NOT NULL,
     id_herramienta INT NOT NULL,
     cantidad INT NOT NULL,
-    devuelto TINYINT(1) DEFAULT 0;
-    FOREIGN KEY (id_prestamo) REFERENCES prestamos(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_herramienta) REFERENCES herramientas(id)
+    devuelto TINYINT(1) DEFAULT 0,
+    FOREIGN KEY (id_prestamo) REFERENCES prestamos(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_herramienta) REFERENCES herramientas(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-
