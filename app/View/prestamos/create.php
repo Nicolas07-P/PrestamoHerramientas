@@ -1,35 +1,49 @@
-<h2>Registrar Préstamo</h2>
-<form method="POST" action="?controller=prestamos&action=store">
+<?php include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
+<link rel="stylesheet" href="/Sistema_prestamo_de_herramientas/public/assets/css/styles.css">
 
-    <div id="herramientas-container">
-        <div class="herramienta">
-            <label>Herramienta:</label>
-            <select name="herramientas[]">
-                <?php foreach ($herramientas as $h): ?>
-                    <option value="<?= $h['id'] ?>"><?= $h['nombre'] ?> (<?= $h['cantidad_disponible'] ?>)</option>
-                <?php endforeach; ?>
-            </select>
-            <label>Cantidad:</label>
-            <input type="number" name="cantidades[]" min="1" value="1">
+<div class="form-prestamo">
+    <h2>Registrar Préstamo</h2>
+    
+    <form method="POST" action="?controller=prestamos&action=store">
+        <div id="herramientas-container">
+            <div class="herramienta-item">
+                <label>Herramienta:</label>
+                <select name="herramientas[]">
+                    <?php foreach ($herramientas as $h): ?>
+                        <option value="<?= $h['id'] ?>">
+                            <?= $h['nombre'] ?> (Disponibles: <?= $h['cantidad_disponible'] ?>)
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                
+                <label>Cantidad:</label>
+                <input type="number" name="cantidades[]" min="1" value="1" max="<?= $h['cantidad_disponible'] ?? '' ?>">
+            </div>
         </div>
-    </div>
-
-    <button type="button" onclick="agregarHerramienta()">+ Agregar otra herramienta</button>
-
-    <label>Fecha de préstamo:</label>
-    <input name="fecha_prestamo" type="date" required>
-
-    <label>Fecha estimada de devolución:</label>
-    <input name="fecha_devolucion_estimada" type="date" required>
-
-    <button type="submit">Guardar</button>
-</form>
+        
+        <button type="button" onclick="agregarHerramienta()" class="btn-agregar">+ Añadir herramienta</button>
+        
+        <div class="fechas">
+            <label>Fecha préstamo:</label>
+            <input type="date" name="fecha_prestamo" required>
+            
+            <label>Fecha devolución estimada:</label>
+            <input type="date" name="fecha_devolucion_estimada" required>
+        </div>
+        
+        <div class="botones">
+            <button type="submit" class="btn-guardar">Guardar préstamo</button>
+            <a href="?controller=auth&action=login" class="btn-volver">Volver</a>
+        </div>
+    </form>
+</div>
 
 <script>
 function agregarHerramienta() {
     const container = document.getElementById('herramientas-container');
-    const html = container.children[0].outerHTML;
-    container.insertAdjacentHTML('beforeend', html);
+    const clone = container.children[0].cloneNode(true);
+    container.appendChild(clone);
 }
 </script>
-<a href="?controller=auth&action=login">Inicio</a>
+
+<?php include __DIR__ . '/../VistaReutilizable/pie.php'; ?>

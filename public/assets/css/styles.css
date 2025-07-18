@@ -1,70 +1,599 @@
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  margin: 0;
-  background: #f4f6fa;
-  color: #222;
+
+/* Estilos index usuarios */ 
+/* Estilos para mensajes */
+.mensaje-error {
+    color: #d32f2f;
+    margin: 10px 0;
+    padding: 8px;
+    background: #ffebee;
 }
 
-.navbar {
-  background: #34495e;
-  padding: 1em;
-}
-.navbar a {
-  color: #fff;
-  margin-right: 1em;
-  text-decoration: none;
-  font-weight: bold;
-}
-.navbar a:hover {
-  text-decoration: underline;
+/* Busqueda */
+.busqueda {
+    margin: 15px 0;
 }
 
-main {
-  max-width: 900px;
-  margin: 2em auto;
-  padding: 1em;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(50,50,93,0.06);
+.busqueda input {
+    padding: 6px;
+    margin-right: 5px;
 }
 
-.footer {
-  text-align: center;
-  padding: 1em 0;
-  background: #34495e;
-  color: #fff;
-  margin-top: 2em;
+/* Tabla */
+.tabla-datos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
 }
 
-.tabla {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1em;
-}
-.tabla th, .tabla td {
-  padding: 0.8em;
-  border-bottom: 1px solid #eaeaea;
-  text-align: left;
-}
-.tabla th {
-  background: #ecf0f1;
+.tabla-datos th, .tabla-datos td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
 }
 
-.btn {
-  padding: 0.5em 1em;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-right: 0.3em;
-  cursor: pointer;
-  font-size: 0.98em;
+.tabla-datos th {
+    background-color: #f2f2f2;
 }
-.btn.crear { background: #27ae60; color: #fff; }
-.btn.editar { background: #2980b9; color: #fff; }
-.btn.eliminar { background: #c0392b; color: #fff; }
 
+/* Acciones */
+.accion-principal {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 10px 0;
+    background: #3f4142;
+    color: white;
+    text-decoration: none;
+}
+
+.celda-acciones a {
+    margin-right: 8px;
+    color: #2196F3;
+    text-decoration: none;
+}
+
+/* Tabla crear herramienta*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+}
+
+
+/* Estilos para formulario */
+.form-herramienta {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial;
+}
+
+.titulo-centrado {
+    text-align: center;
+}
+
+.form-herramienta label {
+    display: block;
+    margin-top: 10px;
+}
+
+.form-herramienta input[type="text"],
+.form-herramienta input[type="number"],
+.form-herramienta textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+.form-herramienta textarea {
+    height: 80px;
+}
+
+.botones {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.botones button, .boton {
+    padding: 8px 15px;
+    margin: 0 5px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.boton {
+    background: #242527;
+}
+
+/* Responsive */
 @media (max-width: 600px) {
-  main { padding: 0.5em; }
-  .tabla th, .tabla td { padding: 0.4em; }
-  .navbar { font-size: 0.95em; }
+    .form-herramienta {
+        padding: 10px;
+    }
+    
+    .botones button, .boton {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+/* Estilos para formulario de edición usuario*/
+.form-edicion {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.campo-formulario {
+    margin-bottom: 15px;
+}
+
+.campo-formulario input,
+.campo-formulario select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.acciones-formulario {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.acciones-formulario button {
+    padding: 8px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+}
+
+/* Estilos para formulario de creacion usuario nuevo */
+.form-usuario {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-usuario input,
+.form-usuario select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.mensaje-error {
+    color: #d32f2f;
+    margin-bottom: 15px;
+    padding: 8px;
+    background: #ffebee;
+    border-left: 3px solid #d32f2f;
+}
+/* Estilos para index herramientas */
+/* Estilos para tabla de herramientas */
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.tabla th, .tabla td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.tabla th {
+    background-color: #f2f2f2;
+}
+
+/* Botones */
+.boton {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #2d302d;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.boton-secundario {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #252729;
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+/* Mensajes */
+.mensaje-error {
+    color: #d32f2f;
+    margin: 10px 0;
+    padding: 8px;
+}
+
+/* Acciones */
+.acciones a {
+    margin-right: 10px;
+    color: #19699e;
+    text-decoration: none;
+}
+/* Estilos para editar herramienta */
+/* Estilos para formulario de herramientas */
+.form-herramienta {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.campo textarea {
+    height: 100px;
+}
+
+.botones {
+    margin-top: 20px;
+}
+
+.botones button {
+    padding: 8px 15px;
+    background: #1e221e;
+    color: white;
+    border: none;
+}
+
+.boton-volver {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 8px 15px;
+    background: #373c41;
+    color: white;
+    text-decoration: none;
+}
+/* estilos login */
+/* Estilos para login */
+.login {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+
+.login h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.login button {
+    width: 100%;
+    padding: 10px;
+    background: #da0622;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.error {
+    color: #d32f2f;
+    background: #ffebee;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-left: 3px solid #d32f2f;
+}
+
+/*Esilos dashboard*/
+/* Estilos para dashboard */
+.dashboard {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.panel {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+.panel h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 10px 0;
+}
+
+.menu a {
+    display: block;
+    padding: 8px 10px;
+    background: #f5f5f5;
+    color: #333;
+    text-decoration: none;
+    border-left: 3px solid #2196F3;
+}
+
+.menu a:hover {
+    background: #e3f2fd;
+}
+
+.logout {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.logout a {
+    color: #d32f2f;
+    text-decoration: none;
+}
+
+.logout a:hover {
+    text-decoration: underline;
+}
+/*estilos index prestamos*/
+/* Estilos para préstamos */
+.prestamos {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.filtros {
+    margin: 15px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.filtros input,
+.filtros select {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.filtros button {
+    padding: 8px 15px;
+    background: #1c1d1f;
+    color: white;
+    border: none;
+}
+
+.tabla-prestamos {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.tabla-prestamos th,
+.tabla-prestamos td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.tabla-prestamos th {
+    background-color: #f2f2f2;
+}
+
+.acciones a {
+    color: #191f1a;
+    text-decoration: none;
+}
+
+.enlaces {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.boton {
+    padding: 8px 15px;
+    background: #292e29;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.boton-secundario {
+    padding: 8px 15px;
+    background: #30353a;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+/* Estilos historial prestamos */
+/* Estilos para historial */
+.historial {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.tabla-historial {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.tabla-historial th, 
+.tabla-historial td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.tabla-historial th {
+    background-color: #f2f2f2;
+}
+
+.tabla-historial tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.volver {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.volver a {
+    padding: 8px 15px;
+    background: #1c1e1f;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+/* Estilos nuevo prestamo */
+/* Estilos para formulario de préstamo */
+.form-prestamo {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.herramienta-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.herramienta-item label {
+    display: block;
+    margin: 5px 0;
+}
+
+.herramienta-item select,
+.herramienta-item input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.fechas {
+    margin: 20px 0;
+}
+
+.fechas label {
+    display: block;
+    margin: 5px 0;
+}
+
+.fechas input[type="date"] {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.btn-agregar {
+    padding: 8px 15px;
+    background: #2c2f31;
+    color: white;
+    border: none;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.botones {
+    margin-top: 20px;
+}
+
+.btn-guardar {
+    padding: 10px 20px;
+    background: #323632;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-volver {
+    padding: 10px 20px;
+    background: #242120;
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+/* Estilos pie de pagina */
+/* Estilos básicos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.cabecera {
+  background: #333;
+  color: white;
+  padding: 1rem;
+}
+
+.cabecera h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.navegacion {
+  margin-top: 1rem;
+}
+
+.navegacion a {
+  color: white;
+  text-decoration: none;
+  margin-right: 1rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.navegacion a:hover {
+  background: #555;
+  border-radius: 3px;
+}
+
+.cerrar-sesion {
+  background: #d32f2f;
+  border-radius: 3px;
+}
+
+.contenido-principal {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pie-pagina {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
 }

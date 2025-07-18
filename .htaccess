@@ -1,9 +1,12 @@
 RewriteEngine On
+RewriteBase /Sistema_prestamo_de_herramientas/
 
-# Cambia la base si tu carpeta se llama prestamo_herramientas
-RewriteBase /prestamo_herramientas/
+# Permitir acceso directo a archivos existentes (CSS, JS, imágenes)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_URI} \.(css|js|png|jpg|jpeg|gif|ico|woff|woff2|ttf|svg)$ [NC]
+RewriteRule ^ - [L]
 
-# Si el archivo o directorio no existe, redirige a index.php
+# Redirigir todo lo demás al front controller
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^.*$ public/index.php [L]
+RewriteRule ^ public/index.php [L]
