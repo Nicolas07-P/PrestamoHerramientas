@@ -42,11 +42,11 @@ class Auth {
 
     /**
      * Exige que el usuario sea administrador.
-     * Si el usuario no es administrador, muestra un mensaje de acceso denegado y termina
+     * Si el usuario no es administrador, lo devuelve al dashboard 
      */    
     public static function requireAdmin() {
         if (!self::isAdmin()) {
-            echo "Acceso denegadooo";
+            header("Location: ?controller=auth&action=login&error=acceso_denegado");
             exit;
         }
     }

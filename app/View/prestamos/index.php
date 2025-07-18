@@ -10,7 +10,6 @@
         <input type="hidden" name="controller" value="prestamos">
         <input type="text" name="q" placeholder="Buscar..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
         <select name="estado">
-            <option value="">Todos</option>
             <option value="activo" <?= ($_GET['estado'] ?? '') === 'activo' ? 'selected' : '' ?>>Activos</option>
             <option value="devuelto" <?= ($_GET['estado'] ?? '') === 'devuelto' ? 'selected' : '' ?>>Devueltos</option>
         </select>
