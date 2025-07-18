@@ -1,3 +1,16 @@
+/**
+ * Vista: Editar Herramienta
+ * Path: /app/View/herramientas/edit.php
+ *
+ * Descripción: Muestra un formulario para editar los datos de una herramienta existente.
+ *
+ * Datos requeridos:
+ * - $herramienta: Array asociativo con los datos actuales de la herramienta:
+ *
+ * Acciones:
+ * - POST a ?controller=herramientas&action=update&id=[ID]
+ * 
+ */
 <?php include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
 <link rel="stylesheet" href="/Sistema_prestamo_de_herramientas/public/assets/css/styles.css">
 

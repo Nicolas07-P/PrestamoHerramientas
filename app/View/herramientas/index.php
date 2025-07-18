@@ -1,3 +1,19 @@
+/**
+ * Vista: Listado de
+ * Path: /app/View/herramientas/index
+ *
+ * Descripción: muestra el lista de herramientas registradas en el sistema,
+ *
+ * Datos requeridos:
+ * - $herramienta: Array de herremientas registradas
+ * -con su id, nombre, descripción y cantidad disponible.
+ *
+ * Acciones:
+ * - Creación: Enlace a ?controller=herramientas&action=create
+ * - Edición: Enlace a ?controller=herramientas&action=edit&id=[ID]
+ * - Eliminación: Enlace a ?controller=herramientas&action=delete&id=[ID]
+ * - Error: Muestra alerta si error='relacionada'
+ */
 <?php include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
 <link rel="stylesheet" href="/Sistema_prestamo_de_herramientas/public/assets/css/styles.css">
 

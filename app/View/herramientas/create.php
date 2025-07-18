@@ -1,3 +1,14 @@
+/**
+ * Vista: Crear Herramienta
+ * Path: /app/View/herramientas/create.php
+ * Descripción: Muestra el formulario para registrar nuevas herramientas en el sistema.
+ * 
+ * Datos requeridos:
+ * - $herramientas: Array de herramientas disponibles para préstamo
+ * 
+ * Acciones:
+ * - POST a ?controller=herramientas&action=store
+ */
 <?php include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
 <link rel="stylesheet" href="/Sistema_prestamo_de_herramientas/public/assets/css/styles.css">
 

@@ -1,3 +1,11 @@
+/**
+ * Vista: Para ingresar correo y contraseña y loguearse en el sistema.
+ * Path: /app/View/autenticacion/login.php
+ * Descripción: Muestra campos para el ingreso de correo y contraseña.
+ *
+ * Acciones:
+ * - POST ?controller=auth&action=authenticate
+ */
 <?php include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
 <link rel="stylesheet" href="/Sistema_prestamo_de_herramientas/public/assets/css/styles.css">
 
