@@ -1,4 +1,6 @@
-/**
+
+ <?php
+ /*
  * Vista: Editar Herramienta
  * Path: /app/View/herramientas/edit.php
  *
@@ -11,7 +13,9 @@
  * - POST a ?controller=herramientas&action=update&id=[ID]
  * 
  */
-<?php include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
+include __DIR__ . '/../VistaReutilizable/encabezado.php';
+?>
+
 <link rel="stylesheet" href="/Sistema_prestamo_de_herramientas/public/assets/css/styles.css">
 
 <h2>Editar Herramienta</h2>

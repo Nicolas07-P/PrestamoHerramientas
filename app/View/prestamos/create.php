@@ -1,4 +1,19 @@
-<?php include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
+<?php 
+/**
+ * Vista: Creacion de Préstamos
+ * Path: /app/View/prestamos/create.php
+ *
+ * Descripción: Muestra el formulario para registrar nuevos préstamos de herramientas en el sistema.
+ *
+ * Datos requeridos: 
+ *
+ * Acciones:
+ * - Creación: Enlace a ?controller=herramientas&action=create
+ * - Edición: Enlace a ?controller=herramientas&action=edit&id=[ID]
+ * - Eliminación: Enlace a ?controller=herramientas&action=delete&id=[ID]
+ * - Error: Muestra alerta si error='relacionada'
+ */
+include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
 <link rel="stylesheet" href="/Sistema_prestamo_de_herramientas/public/assets/css/styles.css">
 
 <div class="form-prestamo">

@@ -1,3 +1,5 @@
+
+<?php
 /**
  * Vista: Listado de
  * Path: /app/View/herramientas/index
@@ -14,7 +16,7 @@
  * - Eliminación: Enlace a ?controller=herramientas&action=delete&id=[ID]
  * - Error: Muestra alerta si error='relacionada'
  */
-<?php include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
+ include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
 <link rel="stylesheet" href="/Sistema_prestamo_de_herramientas/public/assets/css/styles.css">
 
 <h2>Listado de Herramientas</h2>
