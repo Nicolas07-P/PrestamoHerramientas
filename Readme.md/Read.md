@@ -28,7 +28,7 @@ Proyecto PHP con arquitectura MVC que gestiona el prestamo de herramientas, el d
 
 4. Configuracion
 
-    1. Abre el archivo  y verifica que estos datos coincidan con tu configuracion local:
+    1. Abre el archivo  database.php de la carpeta config y verifica que estos datos coincidan con tu configuracion local:
     private static $host = 'localhost';
     private static $db = 'prestamo_herramientas1';
     private static $user = 'root';

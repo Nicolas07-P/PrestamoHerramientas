@@ -6,6 +6,10 @@ require_once __DIR__.'/../Model/Herramienta.php';
  * Permite listar, crear, editar y eliminar herramientas.
  */
 class HerramientaController {
+    public function __construct() {
+        Auth::requireLogin();
+        Auth::requireAdmin(); // Asegura que solo los administradores puedan acceder a estas acciones
+    }
     public function index() {
         $herramientas = Herramienta::all();
         include '../app/View/herramientas/index.php';
@@ -69,5 +73,6 @@ class HerramientaController {
     $stmt = $db->prepare("UPDATE herramientas SET cantidad_disponible = cantidad_disponible - 1 WHERE id = ? AND cantidad_disponible > 0");
     $stmt->execute([$id]);
 }
+
 
 }

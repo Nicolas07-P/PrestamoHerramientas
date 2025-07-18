@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Sistema de Préstamos</title>
-  <link rel="stylesheet" href="/Sistema_prestamo_de_herramientas/public/assets/css/styles.css">
+  <link rel="stylesheet" href="../public/assets/css/styles.css">
 </head>
 <body>
   <header class="cabecera">

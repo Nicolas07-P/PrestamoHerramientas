@@ -1,5 +1,5 @@
 <?php include __DIR__ . '/../VistaReutilizable/encabezado.php'; ?>
-<link rel="stylesheet" href="/Sistema_prestamo_de_herramientas/public/assets/css/styles.css">
+<link rel="stylesheet" href="../public/assets/css/styles.css">
 
 <div class="prestamos">
     <h2>Préstamos Activos</h2>
