@@ -34,7 +34,9 @@
                 <td><?= $p['cantidad'] ?></td>
                 <td><?= date('d/m/Y', strtotime($p['fecha_prestamo'])) ?></td>
                 <td class="acciones">
-                    <a href="?controller=prestamos&action=devolver_parcial&id_detalle=<?= $p['id_detalle'] ?>">Devolver</a>
+                    <?php if ($p['estado'] === 'activo'): ?>
+                        <a href="?controller=prestamos&action=devolver_parcial&id_detalle=<?= $p['id_detalle'] ?>">Devolver</a>
+                    <?php endif; ?>
                 </td>
             </tr>
             <?php endforeach; ?>
